@@ -1,5 +1,5 @@
 import sys
-sys.stdin = open('input.txt')
+sys.stdin = open('input1244.txt')
 
 T = int(input())#스위치 몇개인지 받음
 sw_list = [] # 스위치 리스트 생성
