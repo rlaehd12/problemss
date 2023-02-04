@@ -1,7 +1,7 @@
 import sys
 sys.stdin = open('input10157.txt')
 sys.setrecursionlimit(10**6)
-###대체 값을 뭘 줬는지 백만번 재귀해도 못품
+###대체 값을 뭘 줬는지 재귀로 못품
 
 def check(row, col, cnt, start_lst, final): # 한바퀴 돌기
     # col > row -1 > col -1> row -2> col -2> row -3
