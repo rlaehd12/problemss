@@ -21,7 +21,7 @@ def counting(lst, numb, n):
     return sort_lst
 
 lst = counting(lst, 1000, n)
-print(lst)
+#print(lst)
 
 summ = 0
 
