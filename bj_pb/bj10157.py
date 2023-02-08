@@ -5,33 +5,38 @@ sys.setrecursionlimit(10**6)
 
 def check(row, col, cnt, start_lst, final): # 한바퀴 돌기
     # col > row -1 > col -1> row -2> col -2> row -3
-    for r in range(start_lst[1], col + start_lst[1]): # 1 col번
-        if cnt == final:
-            return start_lst
-        cnt += 1
-        start_lst = [start_lst[0], r]
-        #print(start_lst, end= ' ')
-    for c in range(start_lst[0] + 1, row + start_lst[0]): # 2 row -1 번
-        if cnt == final:
-            return start_lst
-        cnt += 1
-        start_lst = [c, start_lst[1]]
-        #print(start_lst, end= ' ')
-    # print('b')
-    for r in range(start_lst[1] - 1, start_lst[1] - col, -1): # 3 col - 1번
-        if cnt == final:
-            return start_lst
-        cnt += 1
-        start_lst = [start_lst[0], r]
-        #print(start_lst, end= ' ')
-    for c in range(start_lst[0] - 1, start_lst[1], -1): # 4 row - 2번
-        if cnt == final:
-            return start_lst
-        cnt += 1
-        start_lst = [c, start_lst[1]]
-        #print(start_lst, end= ' ')
-    #print('a', end= '    ')
-    return check(row - 2, col - 2, cnt, [start_lst[0], start_lst[1] + 1], final)
+    ###### 맨 아래줄 -2 대신 n으로 좀 바꾸면 어떻게든 될듯
+    while True:
+        for r in range(start_lst[1], col + start_lst[1]): # 1 col번
+            if cnt == final:
+                return start_lst
+            cnt += 1
+            start_lst = [start_lst[0], r]
+            #print(start_lst, end= ' ')
+        for c in range(start_lst[0] + 1, row + start_lst[0]): # 2 row -1 번
+            if cnt == final:
+                return start_lst
+            cnt += 1
+            start_lst = [c, start_lst[1]]
+            #print(start_lst, end= ' ')
+        # print('b')
+        for r in range(start_lst[1] - 1, start_lst[1] - col, -1): # 3 col - 1번
+            if cnt == final:
+                return start_lst
+            cnt += 1
+            start_lst = [start_lst[0], r]
+            #print(start_lst, end= ' ')
+        for c in range(start_lst[0] - 1, start_lst[1], -1): # 4 row - 2번
+            if cnt == final:
+                return start_lst
+            cnt += 1
+            start_lst = [c, start_lst[1]]
+            #print(start_lst, end= ' ')
+        #print('a', end= '    ')
+        row -= 2
+        col -= 2
+        start_lst[1] += 1
+        # return check(row - 2, col - 2, cnt, [start_lst[0], start_lst[1] + 1], final)
     
     
 

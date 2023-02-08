@@ -5,6 +5,24 @@ t = int(input())
 
 ano_numb_lst = ["ZRO", "ONE", "TWO", "THR", "FOR", "FIV", "SIX", "SVN", "EGT", "NIN"]
 
+def counting(lst, n, mx):
+    cnt = [0] * (mx + 1)
+    cnt_lst = [0] * n
+
+    for i in range(n):
+        cnt[lst[i]] += 1
+
+    for i in range(mx):
+        cnt[i+1] += cnt[i]
+    
+    for i in range(n):
+        cnt[lst[i]] -= 1
+        cnt_lst[cnt[lst[i]]] = lst[i] 
+    
+    return cnt_lst
+
+
+
 for tesse in range(1, t+1):
     a, n = input().split()
     n = int(n)
@@ -16,7 +34,7 @@ for tesse in range(1, t+1):
             if lst[i] == ano_numb_lst[j]:
                 lst[i] = j
     
-    lst.sort()
+    lst = counting(lst, n, 9)
 
     for i in range(n):
         for j in range(10):
