@@ -39,14 +39,13 @@ for test_case in range(1, T + 1):
             
     for i in range(9):
         if has_duplicates(listb[i])==True:
-            print(0)
+            print(f'#{test_case} 0')
             break
         elif has_duplicates(columnlist[i])==True:
-            print(0)
+            print(f'#{test_case} 0')
             break
         elif has_duplicates(sudolist[i])==True:
-            print(0)
+            print(f'#{test_case} 0')
             break
     else:
-        print(1)
-    
+        print(f'#{test_case} 1')

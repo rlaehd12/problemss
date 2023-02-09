@@ -25,10 +25,12 @@ for test_case in range(1,t+1):
 
     for _ in range(n):
         lst.append(input())
-    
+
     for i in lst:
         for j in range(n):
             rev_lst[j] += i[j]
+    
+    print(rev_lst)
 
     a = palin(lst, n, m)
     b = palin(rev_lst, n, m)

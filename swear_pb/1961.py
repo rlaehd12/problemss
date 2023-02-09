@@ -1,6 +1,6 @@
 ##숫자 배열 회전시키기
 import sys
-sys.stdin = open('input2.txt')
+sys.stdin = open('1961.txt')
 
 def round90(list2,length):
     roundlist = [[] for i in range(length)]
