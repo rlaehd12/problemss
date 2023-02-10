@@ -10,9 +10,9 @@ def binary(n, t):  # n 책 쪽 / t 타겟
         cnt += 1
         c = int((l+r)/2)
         if c < t:
-            l = c
+            l = c #+ 1
         else:
-            r = c
+            r = c #- 1
     return cnt
 
 
