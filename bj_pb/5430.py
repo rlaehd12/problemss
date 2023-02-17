@@ -27,6 +27,7 @@ for tc in range(1,t+1):
     else:
         if a == 0:
             print(lst)
+            # print("[" + ",".join(iterable) + "]")
         else:
             lst.reverse()
             print(lst)
