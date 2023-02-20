@@ -9,9 +9,8 @@ for tc in range(1,t+1):
     n = int(input())
     lst = input()[1:-1].split(',')
 
-    if n !=0:
-        lst = list(map(int, lst))
-    else:
+
+    if n == 0:
         lst = []
     a = 0
     pos = [0, -1]
@@ -26,8 +25,8 @@ for tc in range(1,t+1):
                 break
     else:
         if a == 0:
-            print(lst)
-            # print("[" + ",".join(iterable) + "]")
+            # print(lst)
+            print("[" + ",".join(lst) + "]")
         else:
             lst.reverse()
-            print(lst)
+            print("[" + ",".join(lst) + "]")
