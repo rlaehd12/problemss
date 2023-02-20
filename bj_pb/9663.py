@@ -2,6 +2,7 @@ def permu(i, n):
     global cnt
     if i == n:  # base case
         cnt += 1
+        print(lst)
     else:
         for j in range(i, n):  # 현재 i-1인덱스까지 고정된 상태
             s = 0
