@@ -56,7 +56,7 @@ print(cnt)
 # func(0)
 # print(cnt)
 
-
+####### 느린거
 # def permu(i, n):
 #     global cnt
 #     global call
