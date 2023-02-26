@@ -2,10 +2,9 @@ def permu(i, n):
     global cnt
     if i == n:  # base case
         cnt += 1
-        print(lst)
+        # print(lst)
     else:
         for j in range(i, n):  # 현재 i-1인덱스까지 고정된 상태
-            s = 0
             lst[i], lst[j] = lst[j], lst[i]  # 자리 바꿈
             
             if right_check[i + (n-1)-lst[i]] == 1 or left_check[i + lst[i]] == 1:
