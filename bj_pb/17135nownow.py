@@ -19,6 +19,6 @@ for i in range(n):
     for j in range(m):
         if lst[i][j] == 1:
             for k in range(m):
-                distance_lst[k].append((i,j, i+1 + abs(j-k)))  # i순으로 확인, # j가 가장 작은 순으로 죽임, 거리 측정
+                distance_lst[k].append((i,j, i+1 + abs(j-k)))  # j가 가장 작은 순으로 죽임, 거리 측정
 
 print(distance_lst)

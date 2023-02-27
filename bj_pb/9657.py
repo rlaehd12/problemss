@@ -5,7 +5,7 @@
 ## 7+ 1,3,4
 
 n = int(input())
-print('CY') if (n%7 == 0 or n%7 == 2) else print('SK')
+# print('CY') if (n%7 == 0 or n%7 == 2) else print('SK')
 
 ##############
 DP = [0] * 1001
@@ -16,6 +16,7 @@ DP[3]=0
 DP[4]=0
 
 for i in range(5,n+1):
-    DP[i] =  0 if (DP[i-1]|DP[i-3]|DP[i-4]) else 1
+    DP[i] =  0 if (DP[i-1] or DP[i-3] or DP[i-4]) else 1
 
+print(DP[:n])
 print("SK" if DP[n]==0 else "CY")
