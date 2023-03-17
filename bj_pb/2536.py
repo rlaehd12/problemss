@@ -39,10 +39,14 @@ def bfs():
             cleft = min(bus_lst[c][2], bus_lst[c][4])
             cright = max(bus_lst[c][2], bus_lst[c][4])
             flag = 0
+            if cleft<=dy<=cright and dx == bus_lst[c][1]:
+                return visited
         else:  # cur x move
             flag = 1
             cleft = min(bus_lst[c][1], bus_lst[c][3])
             cright = max(bus_lst[c][1], bus_lst[c][3])
+            if cleft<=dx<=cright and dy == bus_lst[c][2]:
+                return visited
         
 
         for i in range(K):
