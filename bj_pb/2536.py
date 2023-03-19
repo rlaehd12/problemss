@@ -1,5 +1,6 @@
 from collections import deque
-
+import sys
+sys.stdin = open("2536.txt")
 # def bfs():  # 느림
 #     visited = [0]*(K)  # 방문한 버스
 #     while q:
@@ -49,18 +50,19 @@ def bfs():
                 return visited
         
 
-        for i in range(K):
-            if visited[i] != 0:
+        for i in range(K):  # 모든 버스들 검사
+            if visited[i] != 0:  # 이미 탔던 버스는 무시함
                 continue
             else:
                 if bus_lst[i][1] == bus_lst[i][3]:  # 다음 버스 y축 이동
                     if flag == 0:  # 나도 y축 이동
-                        if bus_lst[i][1] != bus_lst[c][1]:  # 엑스 다르면 깨짐
+                        if bus_lst[i][1] != bus_lst[c][1]:  # x 다르면 깨짐
                             continue
                         else:  # 범위가 겹치는지 확인
                             nleft = min(bus_lst[i][2], bus_lst[i][4])
                             nright = max(bus_lst[i][2], bus_lst[i][4])
-                            if nleft<=cleft<=nright or cleft<=nleft<=cright:  # 둘중 하나라도 범위 겹치면
+                            if nleft<=cleft<=nright or cleft<=nleft<=cright or\
+                                nleft<=cright<=nright or cleft<=nright<=cright:  # 둘중 하나라도 범위 겹치면
                                 visited[i] = visited[c]+1
                                 #==================================
                                 if nleft<=dy<=nright and bus_lst[i][1]==dx:
@@ -76,6 +78,7 @@ def bfs():
                                 visited[i] = visited[c]+1
                                 #==================================
                                 if nleft<=dy<=nright and bus_lst[i][1]==dx:
+                                    # print(bus_lst[i][0])
                                     return visited
                                 q.append(i)
                             else:
@@ -89,7 +92,8 @@ def bfs():
                         else:  # 범위가 겹치는지 확인
                             nleft = min(bus_lst[i][1], bus_lst[i][3])
                             nright = max(bus_lst[i][1], bus_lst[i][3])
-                            if nleft<=cleft<=nright or cleft<=nleft<=cright:  # 둘중 하나라도 범위 겹치면
+                            if nleft<=cleft<=nright or cleft<=nleft<=cright or\
+                                nleft<=cright<=nright or cleft<=nright<=cright:  # 둘중 하나라도 범위 겹치면
                                 visited[i] = visited[c]+1
                                 #==================================
                                 if nleft<=dx<=nright and bus_lst[i][2]==dy:
@@ -114,27 +118,43 @@ def bfs():
 
     return visited
 
-def can_go(i, x, y):  # i번 버스가 xy갈 수 있나
-    if bus_lst[i][1] == x or bus_lst[i][2] == y:  # 같은 줄에 있으면
-        if bus_lst[i][1] == bus_lst[i][3]:
-            left = min(bus_lst[i][2], bus_lst[i][4])
-            right = max(bus_lst[i][2], bus_lst[i][4])
-            if left <= y <= right:
-                return True
-            else:
-                return False
-        else:
-            left = min(bus_lst[i][1], bus_lst[i][3])
-            right = max(bus_lst[i][1], bus_lst[i][3])
-            if left <= x <= right:
-                return True
-            else:
-                return False
-        pass
-    else:
-        return False  # 같은 줄에 없으면 아예 못감
+# def can_go(i, x, y):  # i번 버스가 xy갈 수 있나 잘못함
+#     if bus_lst[i][1] == x or bus_lst[i][2] == y:  # 같은 줄에 있으면
+#         if bus_lst[i][1] == bus_lst[i][3]:
+#             left = min(bus_lst[i][2], bus_lst[i][4])
+#             right = max(bus_lst[i][2], bus_lst[i][4])
+#             if left <= y <= right:
+#                 return True
+#             else:
+#                 return False
+#         else:
+#             left = min(bus_lst[i][1], bus_lst[i][3])
+#             right = max(bus_lst[i][1], bus_lst[i][3])
+#             if left <= x <= right:
+#                 return True
+#             else:
+#                 return False
+#         pass
+#     else:
+#         return False  # 같은 줄에 없으면 아예 못감
 
-def find_start(sx,sy):
+def can_go(i, x, y):  # i번 버스가 xy갈 수 있나
+    if bus_lst[i][1] == bus_lst[i][3]:  # y축 이동
+        if x != bus_lst[i][1]:
+            return False
+        left = min(bus_lst[i][2], bus_lst[i][4])
+        right = max(bus_lst[i][2], bus_lst[i][4])
+        if left<=y<=right:
+            return True
+    else:  # x축 이동
+        if y != bus_lst[i][2]:
+            return False
+        left = min(bus_lst[i][1], bus_lst[i][3])
+        right = max(bus_lst[i][1], bus_lst[i][3])
+        if left<=x<=right:
+            return True
+
+def find_start(sx,sy): 
     s_lst = []
     for i in range(K):
         if can_go(i, sx, sy):
