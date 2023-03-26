@@ -29,6 +29,8 @@ def dfs(a,b):  # 시작위치 지정
                         color(i, j, width, reverse=False)
                         paper_lst[width] += 1
                         ans[1] -= 1
+                else:  # 이거 한줄 깜빡해서 시간초과남
+                    return
 
 
             if i == 9 and j == 9:  # base case
