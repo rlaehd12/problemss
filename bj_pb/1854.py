@@ -14,10 +14,10 @@ for _ in range(m):
     if graph[a][b] > c:
         graph[a][b] = c
 print(graph)
-path = [[float('inf')] for _ in range(n+1)]
+path = [[] for _ in range(n+1)]
 
 def dijkstra(graph, start):
-    path[start] = [0]
+    path[start].append(0)
     queue = []
     heapq.heappush(queue, (0, start)) # queue에 heapq를 이용하여 (weight, start)를 추가한다.
     while queue:
@@ -29,19 +29,15 @@ def dijkstra(graph, start):
                 path[nxt].pop()
                 path[nxt].append(dist)
                 path[nxt].sort()
-                heapq.heappush(queue, (dist, nxt)) # 전부 다 추가할거임
+                heapq.heappush(queue, (dist, nxt)) # 전부 다 추가
             elif len(path[nxt]) < k:
                 path[nxt].append(dist)
                 path[nxt].sort()
-                heapq.heappush(queue, (dist, nxt)) # 전부 다 추가할거임
-            # print(nxt, path[nxt])
-            # print('q',queue)
+                heapq.heappush(queue, (dist, nxt)) # 전부 다 추가
 
 dijkstra(graph, 1)
-# print(path)
-for idx, i in enumerate(path[1:]):
-    if idx == 0 and k > 1:
+for i in path[1:]:
+    if len(i) == k:
+        print(i[-1])
+    else:
         print(-1)
-        continue
-    a = -1 if i[-1] == float('inf') else i[-1]
-    print(a)
